@@ -1,7 +1,7 @@
 Doorkeeper.configure do
   resource_owner_from_credentials do |routes|
     user = User.find_by(:username => request.headers["username"])
-    if user
+    if user    	
     user.password = AESCrypt.decrypt(user.password, "TSC_Grupo_12")
     	if user && user.password == request.headers["password"]
       	user
