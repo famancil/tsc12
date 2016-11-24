@@ -4571,3 +4571,13 @@ Filter chain halted as :doorkeeper_authorize! rendered or redirected
 Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
 
 
+Started GET "/oauth/applications" for 127.0.0.1 at 2016-11-24 01:37:36 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Doorkeeper::ApplicationsController#index as HTML
+  Rendering doorkeeper/applications/index.html.erb within layouts/doorkeeper/admin
+  [1m[36mDoorkeeper::Application Load (0.2ms)[0m  [1m[34mSELECT "oauth_applications".* FROM "oauth_applications"[0m
+  Rendered doorkeeper/applications/_delete_form.html.erb (1.1ms)
+  Rendered doorkeeper/applications/index.html.erb within layouts/doorkeeper/admin (90.9ms)
+Completed 200 OK in 428ms (Views: 402.0ms | ActiveRecord: 0.9ms)
+
+
