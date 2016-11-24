@@ -9,12 +9,6 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
 
 	var configu = {disableCountDown: true};
 
-
-	//$scope.user=$rootScope.user;
-	//var storageType = localStorageService.set("num",num);
-	//$scope.num=localStorageService.get("num");
-	//$window.localStorage.setItem("num", num);
-	//$scope.title = $rootScope.test;
 	$scope.id = $window.localStorage['id'];
 	$scope.user.username = $window.localStorage['username'];
 	$scope.user.password = $window.localStorage['password'];
@@ -36,10 +30,6 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
                 
             });
 
-	//$scope.$storage = $localStorage
-	/*if($scope.items)$window.location.href="../views/login.html";
-	else $window.location.href="../views/about.html";*/
-
     $scope.logout = function(){
         $window.localStorage.clear();
         $window.location.href="../views/login.html";
@@ -60,13 +50,10 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
                             $timeout(function() {
                                 $window.location.reload();
                             },2000);                          
-                            //growl.success("<b>Exito</b>, usuario ha sido creado", configu);
-                            // success callback
                           }, 
                           function(response){
                             $scope.err=response;
                             growl.error("Error en el registro, favor verificar datos", configu);
-                            // failure callback
                           }
                         );  
 
@@ -85,7 +72,6 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
     };
 
     $scope.okEdit = function(note) {
-        //$scope.editNote=note;
         $http.put("http://localhost:3000/users/"+note.user_id+"/notes/"+note.id, note, config)
         .then(
                           function(response){
@@ -93,13 +79,10 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
                             $timeout(function() {
                                 $window.location.reload();
                             },2000);                          
-                            //growl.success("<b>Exito</b>, usuario ha sido creado", configu);
-                            // success callback
                           }, 
                           function(response){
                             $scope.err=response;
                             growl.error("Error en el registro, favor verificar datos", configu);
-                            // failure callback
                           }
                         );  
 
@@ -119,7 +102,6 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
     };
 
     $scope.okDelete = function(id,user_id) {
-        //$scope.editNote=note;
         $http.delete("http://localhost:3000/users/"+user_id+"/notes/"+id, config)
         .then(
                           function(response){
@@ -127,13 +109,10 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
                             $timeout(function() {
                                $window.location.reload();
                             },2000);                          
-                            //growl.success("<b>Exito</b>, usuario ha sido creado", configu);
-                            // success callback
                           }, 
                           function(response){
                             $scope.err=response;
                             growl.error("Error en el registro, favor verificar datos", configu);
-                            // failure callback
                           }
                         );  
 
@@ -145,23 +124,6 @@ app.controller('NotesController', function($http,$scope,$window,growl,$timeout){
         $scope.deleteNoteModal = false;
         $window.location.reload();
     };
-
-
-
-
-	
-	/*$scope.searchWeather = function(){
-		var searchTerm = $scope.assetName;
-		$http.get('http://api.openweathermap.org/data/2.5/find?q='+searchTerm+'&type=like&sort=population&cnt=30&units=metric&APPID=73136fa514890c15bc4534e7b8a1c0c4').success(function(data){
-			$scope.items = data.list;
-			$scope.totalCount = data.count;
-		});
-	};
-	
-    $scope.grabar = function(){
-    	$localStorage.valor=$scope.num;
-    }*/
-
 });
 
 app.config(['growlProvider', function (growlProvider) {

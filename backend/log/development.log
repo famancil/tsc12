@@ -4677,3 +4677,1829 @@ Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 02:31:19 -0300
   [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "admin"], ["LIMIT", 1]]
   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 14:35:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 14:35:25 -0300
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "546f8c35c6efe68b7bdbbba2837b5e17782c0aeee28badb5795a4866e0c6eaa5"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "546f8c35c6efe68b7bdbbba2837b5e17782c0aeee28badb5795a4866e0c6eaa5"], ["expires_in", 7200], ["created_at", 2016-11-24 17:35:25 UTC], ["scopes", ""]]
+  [1m[35m (119.7ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users" for 127.0.0.1 at 2016-11-24 14:35:26 -0300
+Processing by UsersController#index as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.3ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "546f8c35c6efe68b7bdbbba2837b5e17782c0aeee28badb5795a4866e0c6eaa5"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.5ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendering users/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (75.6ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered users/_user.json.jbuilder (1.3ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 3]]
+  Rendered users/_user.json.jbuilder (8.3ms)
+  Rendered users/index.json.jbuilder (118.5ms)
+Completed 200 OK in 217ms (Views: 169.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 14:35:26 -0300
+Processing by NotesController#index as JSON
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 14:35:26 -0300
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "546f8c35c6efe68b7bdbbba2837b5e17782c0aeee28badb5795a4866e0c6eaa5"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.1ms)
+  Rendered notes/_note.json.jbuilder (1.5ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (38.0ms)
+Completed 200 OK in 155ms (Views: 45.2ms | ActiveRecord: 0.7ms)
+
+
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.8ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "546f8c35c6efe68b7bdbbba2837b5e17782c0aeee28badb5795a4866e0c6eaa5"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.3ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.8ms)
+  Rendered tags/index.json.jbuilder (18.0ms)
+Completed 200 OK in 32ms (Views: 21.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 14:39:01 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "56476192eade37dc50c0cd7ccd54d3f3459814161bdaa7f6a39f10786eb4e43d"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "56476192eade37dc50c0cd7ccd54d3f3459814161bdaa7f6a39f10786eb4e43d"], ["expires_in", 7200], ["created_at", 2016-11-24 17:39:01 UTC], ["scopes", ""]]
+  [1m[35m (224.9ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 232ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 14:42:15 -0300
+Processing by Doorkeeper::TokensController#create as JSON
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil4"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 1ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 14:43:10 -0300
+Processing by Doorkeeper::TokensController#create as JSON
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil4"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms
+
+
+Started GET "/users" for 127.0.0.1 at 2016-11-24 14:57:55 -0300
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.4ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "8313394ae9ce0b172e75692821474e42770af6f42be335772796052452f236f9"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "8313394ae9ce0b172e75692821474e42770af6f42be335772796052452f236f9"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "8313394ae9ce0b172e75692821474e42770af6f42be335772796052452f236f9"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "8313394ae9ce0b172e75692821474e42770af6f42be335772796052452f236f9"], ["LIMIT", 1]]
+Filter chain halted as :doorkeeper_authorize! rendered or redirected
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.5ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 14:58:01 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "00807cf82301b733481fc849b1acda94b55ff946a4c293fe1ec5aa2fb9707dee"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "00807cf82301b733481fc849b1acda94b55ff946a4c293fe1ec5aa2fb9707dee"], ["expires_in", 7200], ["created_at", 2016-11-24 17:58:01 UTC], ["scopes", ""]]
+  [1m[35m (156.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 162ms
+
+
+Started GET "/users" for 127.0.0.1 at 2016-11-24 14:58:07 -0300
+Processing by UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "00807cf82301b733481fc849b1acda94b55ff946a4c293fe1ec5aa2fb9707dee"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendering users/index.json.jbuilder
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (10.8ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered users/_user.json.jbuilder (1.9ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 3]]
+  Rendered users/_user.json.jbuilder (4.4ms)
+  Rendered users/index.json.jbuilder (20.2ms)
+Completed 200 OK in 28ms (Views: 22.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:12:46 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "00807cf82301b733481fc849b1acda94b55ff946a4c293fe1ec5aa2fb9707dee"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.7ms)
+  Rendered notes/_note.json.jbuilder (2.1ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (13.9ms)
+Completed 200 OK in 22ms (Views: 16.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:12:55 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1", "tag"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "00807cf82301b733481fc849b1acda94b55ff946a4c293fe1ec5aa2fb9707dee"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.8ms)
+  Rendered tags/index.json.jbuilder (5.0ms)
+Completed 200 OK in 14ms (Views: 9.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 15:13:29 -0300
+Processing by Doorkeeper::TokensController#create as JSON
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["expires_in", 7200], ["created_at", 2016-11-24 18:13:29 UTC], ["scopes", ""]]
+  [1m[35m (331.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 337ms
+
+
+Started GET "/users" for 127.0.0.1 at 2016-11-24 15:13:29 -0300
+Processing by UsersController#index as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendering users/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.0ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (5.2ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered users/_user.json.jbuilder (1.4ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 3]]
+  Rendered users/_user.json.jbuilder (3.1ms)
+  Rendered users/index.json.jbuilder (12.3ms)
+Completed 200 OK in 18ms (Views: 14.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:13:29 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:13:29 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  Rendering tags/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.3ms)
+  Rendered tags/_tag.json.jbuilder (1.1ms)
+  Rendered notes/_note.json.jbuilder (1.6ms)
+  Rendered tags/index.json.jbuilder (11.4ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+Completed 200 OK in 30ms (Views: 20.7ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (17.8ms)
+Completed 200 OK in 35ms (Views: 24.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:17:48 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "00807cf82301b733481fc849b1acda94b55ff946a4c293fe1ec5aa2fb9707dee"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.1ms)
+  Rendered notes/_note.json.jbuilder (1.1ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (7.7ms)
+Completed 200 OK in 17ms (Views: 11.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:19:27 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:19:27 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  Rendering tags/index.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.5ms)
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  Rendered notes/_note.json.jbuilder (1.8ms)
+  Rendered tags/index.json.jbuilder (9.7ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+Completed 200 OK in 26ms (Views: 18.3ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (15.4ms)
+Completed 200 OK in 29ms (Views: 22.7ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/assignation" for 127.0.0.1 at 2016-11-24 15:23:52 -0300
+Processing by NotesController#assign as JSON
+  Parameters: {"note_id"=>"2", "tag_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)[0m  [["note_id", 2], ["tag_id", 1]]
+  [1m[35m (120.5ms)[0m  [1m[36mcommit transaction[0m
+  Rendering notes/show.json.jbuilder
+  Rendered notes/_note.json.jbuilder (0.5ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/show.json.jbuilder (2.9ms)
+Completed 201 Created in 181ms (Views: 37.4ms | ActiveRecord: 122.3ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:23:54 -0300
+Processing by NotesController#index as JSON
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:23:54 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.9ms)
+  Rendering notes/index.json.jbuilder
+  Rendered tags/index.json.jbuilder (8.3ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 0.4ms)
+
+
+  Rendered notes/_note.json.jbuilder (1.9ms)
+  Rendered notes/_note.json.jbuilder (1.1ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (9.4ms)
+Completed 200 OK in 25ms (Views: 12.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:30:35 -0300
+Processing by NotesController#index as JSON
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:30:35 -0300
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (1.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.0ms)
+  Rendered tags/_tag.json.jbuilder (0.7ms)
+  Rendered tags/index.json.jbuilder (6.2ms)
+  Rendered notes/_note.json.jbuilder (1.2ms)
+Completed 200 OK in 26ms (Views: 11.0ms | ActiveRecord: 1.7ms)
+
+
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (17.9ms)
+Completed 200 OK in 33ms (Views: 24.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/assignation" for 127.0.0.1 at 2016-11-24 15:30:44 -0300
+Processing by NotesController#assign as JSON
+  Parameters: {"note_id"=>"2", "tag_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)[0m  [["note_id", 2], ["tag_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.3ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: notes_tags.note_id, notes_tags.tag_id: INSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)):
+  
+app/controllers/notes_controller.rb:22:in `assign'
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (51.9ms)
+Started POST "/assignation" for 127.0.0.1 at 2016-11-24 15:31:12 -0300
+Processing by NotesController#assign as JSON
+  Parameters: {"note_id"=>"2", "tag_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)[0m  [["note_id", 2], ["tag_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.1ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: notes_tags.note_id, notes_tags.tag_id: INSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)):
+  
+app/controllers/notes_controller.rb:22:in `assign'
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.7ms)
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:32:47 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:32:47 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (1.9ms)
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.1ms)
+  Rendered notes/_note.json.jbuilder (2.2ms)
+  Rendered tags/index.json.jbuilder (6.3ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+Completed 200 OK in 27ms (Views: 15.8ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (18.8ms)
+Completed 200 OK in 32ms (Views: 24.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/assignation" for 127.0.0.1 at 2016-11-24 15:33:07 -0300
+Processing by NotesController#assign as JSON
+  Parameters: {"note_id"=>"2", "tag_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)[0m  [["note_id", 2], ["tag_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.8ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: notes_tags.note_id, notes_tags.tag_id: INSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)):
+  
+app/controllers/notes_controller.rb:22:in `assign'
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.0ms)
+Started POST "/assignation" for 127.0.0.1 at 2016-11-24 15:37:07 -0300
+Processing by NotesController#assign as JSON
+  Parameters: {"note_id"=>"2", "tag_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)[0m  [["note_id", 2], ["tag_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 1.2ms)
+
+
+  
+ActiveRecord::RecordNotUnique (SQLite3::ConstraintException: UNIQUE constraint failed: notes_tags.note_id, notes_tags.tag_id: INSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)):
+  
+app/controllers/notes_controller.rb:22:in `assign'
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/famancil/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.1ms)
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:37:52 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:37:52 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  Rendering tags/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (1.7ms)
+  Rendered tags/_tag.json.jbuilder (1.0ms)
+  Rendered notes/_note.json.jbuilder (1.4ms)
+  Rendered tags/index.json.jbuilder (8.8ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+Completed 200 OK in 28ms (Views: 13.8ms | ActiveRecord: 0.4ms)
+
+
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (13.1ms)
+Completed 200 OK in 32ms (Views: 20.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/assignation" for 127.0.0.1 at 2016-11-24 15:38:00 -0300
+Processing by NotesController#assign as JSON
+  Parameters: {"note_id"=>"1", "tag_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.0ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)[0m  [["note_id", 1], ["tag_id", 1]]
+  [1m[35m (97.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering notes/show.json.jbuilder
+  Rendered notes/_note.json.jbuilder (0.5ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  Rendered notes/show.json.jbuilder (2.6ms)
+Completed 201 Created in 112ms (Views: 5.5ms | ActiveRecord: 98.7ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:38:03 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:38:03 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered tags/_tag.json.jbuilder (0.7ms)
+  Rendered tags/index.json.jbuilder (7.5ms)
+  Rendering notes/index.json.jbuilder
+Completed 200 OK in 19ms (Views: 15.0ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.0ms)
+  Rendered notes/_note.json.jbuilder (1.1ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (9.6ms)
+Completed 200 OK in 25ms (Views: 13.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:38:13 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  Rendered tags/index.json.jbuilder (3.4ms)
+Completed 200 OK in 12ms (Views: 6.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:38:23 -0300
+Processing by TagsController#create as JSON
+  Parameters: {"tagname"=>"Segunda Etiqueta", "description"=>"Esta es una etiqueta", "user_id"=>"1", "tag"=>{"tagname"=>"Segunda Etiqueta", "description"=>"Esta es una etiqueta", "user_id"=>"1"}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tags" ("tagname", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["tagname", "Segunda Etiqueta"], ["description", "Esta es una etiqueta"], ["user_id", 1], ["created_at", 2016-11-24 18:38:23 UTC], ["updated_at", 2016-11-24 18:38:23 UTC]]
+  [1m[35m (78.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering tags/show.json.jbuilder
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  Rendered tags/show.json.jbuilder (1.4ms)
+Completed 201 Created in 102ms (Views: 14.9ms | ActiveRecord: 79.5ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:38:26 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.7ms)
+  Rendered tags/_tag.json.jbuilder (0.3ms)
+  Rendered tags/index.json.jbuilder (3.5ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:38:27 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:38:27 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendering tags/index.json.jbuilder
+  Rendered notes/_note.json.jbuilder (2.0ms)
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (1.3ms)
+  Rendered tags/_tag.json.jbuilder (0.6ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered tags/index.json.jbuilder (9.0ms)
+  Rendered notes/index.json.jbuilder (16.9ms)
+Completed 200 OK in 30ms (Views: 17.7ms | ActiveRecord: 0.6ms)
+
+
+Completed 200 OK in 31ms (Views: 23.4ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/assignation" for 127.0.0.1 at 2016-11-24 15:38:36 -0300
+Processing by NotesController#assign as JSON
+  Parameters: {"note_id"=>"1", "tag_id"=>"3", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "notes_tags" ("note_id", "tag_id") VALUES (?, ?)[0m  [["note_id", 1], ["tag_id", 3]]
+  [1m[35m (100.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering notes/show.json.jbuilder
+  Rendered notes/_note.json.jbuilder (0.6ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  Rendered notes/show.json.jbuilder (3.0ms)
+Completed 201 Created in 116ms (Views: 5.9ms | ActiveRecord: 102.2ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 15:38:38 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 15:38:38 -0300
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+Processing by TagsController#index as JSON
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered notes/_note.json.jbuilder (1.8ms)
+  Rendering tags/index.json.jbuilder
+  Rendered notes/_note.json.jbuilder (1.7ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (17.9ms)
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+Completed 200 OK in 28ms (Views: 22.2ms | ActiveRecord: 0.7ms)
+
+
+  Rendered tags/index.json.jbuilder (8.8ms)
+Completed 200 OK in 23ms (Views: 13.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 15:40:16 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (6.9ms)
+  Rendered users/show.json.jbuilder (8.3ms)
+Completed 200 OK in 16ms (Views: 10.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 15:40:21 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "202d84c2f13a25469174bc655745222abdebb8f6b2be255b14f2c2edd5687e2b"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (8.3ms)
+  Rendered users/show.json.jbuilder (9.9ms)
+Completed 200 OK in 16ms (Views: 12.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:28:37 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "0ecd0a0dc949763326ef58021fa2ec5eb8e1eeddf724b25dd4d39bfa7ce49cf7"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "0ecd0a0dc949763326ef58021fa2ec5eb8e1eeddf724b25dd4d39bfa7ce49cf7"], ["expires_in", 7200], ["created_at", 2016-11-24 21:28:37 UTC], ["scopes", ""]]
+  [1m[35m (117.0ms)[0m  [1m[36mcommit transaction[0m
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:29:23 -0300
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "203bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "203bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["expires_in", 7200], ["created_at", 2016-11-24 21:29:23 UTC], ["scopes", ""]]
+  [1m[35m (161.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:30:08 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "203bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (13.4ms)
+  Rendered notes/_note.json.jbuilder (1.5ms)
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (44.3ms)
+Completed 200 OK in 74ms (Views: 48.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:30:13 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.4ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "201bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "201bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "201bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "201bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+Filter chain halted as :doorkeeper_authorize! rendered or redirected
+Completed 401 Unauthorized in 15ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:30:20 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "203bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (1.5ms)
+  Rendered notes/_note.json.jbuilder (1.6ms)
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (9.8ms)
+Completed 200 OK in 19ms (Views: 12.9ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:32:03 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.4ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "famancil"], ["secret", "hola123"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 401 Unauthorized in 6ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:32:10 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "famancil"], ["secret", "hola123"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:32:12 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "famancil"], ["secret", "hola1234"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:32:18 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "famancil"], ["secret", "hola123"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:32:41 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "famancil"], ["secret", "hola123"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:32:54 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "famancil"], ["secret", "hola123"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:34:07 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "705d5a0572ab9b0b60ca8e779683671d819626f670931eb90e3c492b255ce672"], ["secret", "d76fb29b962f257b2a8d37d80930163084a8cbf5100ef5df7d892e7595be983a"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "1d39737f5b5a3162692d9a9aa1151a59eeb316ab4f58a28524c7824933f7ecd8"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "1d39737f5b5a3162692d9a9aa1151a59eeb316ab4f58a28524c7824933f7ecd8"], ["expires_in", 7200], ["created_at", 2016-11-24 21:34:07 UTC], ["scopes", ""]]
+  [1m[35m (220.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 229ms
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:34:57 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+Filter chain halted as :doorkeeper_authorize! rendered or redirected
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:35:02 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "705d5a0572ab9b0b60ca8e779683671d819626f670931eb90e3c492b255ce672"], ["secret", "d76fb29b962f257b2a8d37d80930163084a8cbf5100ef5df7d892e7595be983a"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "c5003b51bfa0e2bee381182865439c148527251a9863f28e8266b45543832f3b"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "c5003b51bfa0e2bee381182865439c148527251a9863f28e8266b45543832f3b"], ["expires_in", 7200], ["created_at", 2016-11-24 21:35:02 UTC], ["scopes", ""]]
+  [1m[35m (176.5ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 182ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:35:41 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "705d5a0572ab9b0b60ca8e779683671d819626f670931eb90e3c492b255ce672"], ["secret", "d76fb29b962f257b2a8d37d80930163084a8cbf5100ef5df7d892e7595be983a"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "d9e3a660946520d3fe3317d0ec552f9f767319e6898ee29db364dd9be5c4d526"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "d9e3a660946520d3fe3317d0ec552f9f767319e6898ee29db364dd9be5c4d526"], ["expires_in", 7200], ["created_at", 2016-11-24 21:35:41 UTC], ["scopes", ""]]
+  [1m[35m (398.1ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 405ms
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:36:39 -0300
+Processing by Doorkeeper::TokensController#create as */*
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mDoorkeeper::Application Load (0.1ms)[0m  [1m[34mSELECT  "oauth_applications".* FROM "oauth_applications" WHERE "oauth_applications"."uid" = ? AND "oauth_applications"."secret" = ? LIMIT ?[0m  [["uid", "705d5a0572ab9b0b60ca8e779683671d819626f670931eb90e3c492b255ce672"], ["secret", "d76fb29b962f257b2a8d37d80930163084a8cbf5100ef5df7d892e7595be983a"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "47319832d56f42090d7a38a6950bb89a010e595ab71b48c2ccff5ac209b0418e"], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "47319832d56f42090d7a38a6950bb89a010e595ab71b48c2ccff5ac209b0418e"], ["expires_in", 7200], ["created_at", 2016-11-24 21:36:39 UTC], ["scopes", ""]]
+  [1m[35m (186.7ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 198ms
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:36:46 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "203bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (3.6ms)
+  Rendered notes/_note.json.jbuilder (3.0ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (13.7ms)
+Completed 200 OK in 23ms (Views: 17.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:38:48 -0300
+Processing by Doorkeeper::TokensController#create as JSON
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.1ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["expires_in", 7200], ["created_at", 2016-11-24 21:38:48 UTC], ["scopes", ""]]
+  [1m[35m (188.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 194ms
+
+
+Started GET "/users" for 127.0.0.1 at 2016-11-24 18:38:48 -0300
+Processing by UsersController#index as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendering users/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (6.2ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered users/_user.json.jbuilder (1.5ms)
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 3]]
+  Rendered users/_user.json.jbuilder (3.9ms)
+  Rendered users/index.json.jbuilder (14.1ms)
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:38:48 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 18:38:48 -0300
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.1ms)
+  Rendered notes/_note.json.jbuilder (1.4ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (10.7ms)
+Completed 200 OK in 20ms (Views: 13.2ms | ActiveRecord: 0.7ms)
+
+
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.8ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.4ms)
+  Rendered tags/_tag.json.jbuilder (0.5ms)
+  Rendered tags/index.json.jbuilder (9.7ms)
+Completed 200 OK in 21ms (Views: 13.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:38:55 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (8.3ms)
+  Rendered users/show.json.jbuilder (10.3ms)
+Completed 200 OK in 17ms (Views: 13.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:39:01 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (9.3ms)
+  Rendered users/show.json.jbuilder (11.3ms)
+Completed 200 OK in 19ms (Views: 14.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:41:01 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 18:41:01 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendering notes/index.json.jbuilder
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.5ms)
+  Rendered notes/_note.json.jbuilder (1.8ms)
+  Rendered tags/index.json.jbuilder (11.8ms)
+Completed 200 OK in 39ms (Views: 17.7ms | ActiveRecord: 0.5ms)
+
+
+  Rendered notes/_note.json.jbuilder (2.5ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (15.3ms)
+Completed 200 OK in 55ms (Views: 44.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:41:07 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (8.3ms)
+  Rendered users/show.json.jbuilder (9.9ms)
+Completed 200 OK in 15ms (Views: 12.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:45:20 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1", "note"=>{}}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "203bc3e75e1711c63b71b9288561a3921e122143f68ae28a54b0fac4f634af03"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.0ms)
+  Rendered notes/_note.json.jbuilder (2.1ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (13.6ms)
+Completed 200 OK in 22ms (Views: 16.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:48:31 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (6.1ms)
+  Rendered users/show.json.jbuilder (7.6ms)
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:48:34 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (7.5ms)
+  Rendered users/show.json.jbuilder (8.8ms)
+Completed 200 OK in 15ms (Views: 11.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:48:38 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.7ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (11.3ms)
+  Rendered users/show.json.jbuilder (13.5ms)
+Completed 200 OK in 23ms (Views: 17.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:49:46 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "06b1cc294073241cc1914dc137d80dc639dec0286fa0a3b588c73ff35de05440"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (10.9ms)
+  Rendered users/show.json.jbuilder (12.9ms)
+Completed 200 OK in 20ms (Views: 16.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:50:55 -0300
+Processing by Doorkeeper::TokensController#create as JSON
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "b56b46904a1522d497bdd031548fe4e64f4e9fa20eea49638b8d81e8db066080"], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "b56b46904a1522d497bdd031548fe4e64f4e9fa20eea49638b8d81e8db066080"], ["expires_in", 7200], ["created_at", 2016-11-24 21:50:55 UTC], ["scopes", ""]]
+  [1m[35m (114.2ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 120ms
+
+
+Started GET "/users" for 127.0.0.1 at 2016-11-24 18:50:55 -0300
+Processing by UsersController#index as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "b56b46904a1522d497bdd031548fe4e64f4e9fa20eea49638b8d81e8db066080"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendering users/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.6ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (9.5ms)
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered users/_user.json.jbuilder (2.5ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 3]]
+  Rendered users/_user.json.jbuilder (4.7ms)
+  Rendered users/index.json.jbuilder (20.9ms)
+Completed 200 OK in 29ms (Views: 23.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:50:55 -0300
+Processing by NotesController#index as JSON
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 18:50:55 -0300
+  Parameters: {"user_id"=>"1"}
+Processing by TagsController#index as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "b56b46904a1522d497bdd031548fe4e64f4e9fa20eea49638b8d81e8db066080"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "b56b46904a1522d497bdd031548fe4e64f4e9fa20eea49638b8d81e8db066080"], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.4ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered notes/_note.json.jbuilder (3.7ms)
+  Rendering tags/index.json.jbuilder
+  Rendered notes/_note.json.jbuilder (3.1ms)
+  [1m[36mTag Load (0.8ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (30.6ms)
+Completed 200 OK in 45ms (Views: 35.7ms | ActiveRecord: 1.1ms)
+
+
+  Rendered tags/_tag.json.jbuilder (2.1ms)
+  Rendered tags/_tag.json.jbuilder (0.5ms)
+  Rendered tags/index.json.jbuilder (16.5ms)
+Completed 200 OK in 43ms (Views: 24.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:50:59 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "b56b46904a1522d497bdd031548fe4e64f4e9fa20eea49638b8d81e8db066080"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (9.6ms)
+  Rendered users/show.json.jbuilder (11.7ms)
+Completed 200 OK in 21ms (Views: 15.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:51:25 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "b56b46904a1522d497bdd031548fe4e64f4e9fa20eea49638b8d81e8db066080"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (11.0ms)
+  Rendered users/show.json.jbuilder (13.3ms)
+Completed 200 OK in 21ms (Views: 16.5ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/oauth/token" for 127.0.0.1 at 2016-11-24 18:53:38 -0300
+Processing by Doorkeeper::TokensController#create as JSON
+  Parameters: {"grant_type"=>"password"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "famancil"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mDoorkeeper::AccessToken Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "oauth_access_tokens" ("resource_owner_id", "token", "expires_in", "created_at", "scopes") VALUES (?, ?, ?, ?, ?)[0m  [["resource_owner_id", 1], ["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["expires_in", 7200], ["created_at", 2016-11-24 21:53:38 UTC], ["scopes", ""]]
+  [1m[35m (91.8ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 99ms
+
+
+Started GET "/users" for 127.0.0.1 at 2016-11-24 18:53:38 -0300
+Processing by UsersController#index as JSON
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  Rendering users/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (5.5ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered users/_user.json.jbuilder (1.4ms)
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 3]]
+  Rendered users/_user.json.jbuilder (2.9ms)
+  Rendered users/index.json.jbuilder (12.7ms)
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:53:38 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 18:53:38 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.2ms)
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.2ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.0ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered tags/_tag.json.jbuilder (0.3ms)
+  Rendered notes/index.json.jbuilder (16.9ms)
+  Rendered tags/index.json.jbuilder (10.1ms)
+Completed 200 OK in 45ms (Views: 38.6ms | ActiveRecord: 0.6ms)
+
+
+Completed 200 OK in 45ms (Views: 32.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:53:40 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (7.0ms)
+  Rendered users/show.json.jbuilder (8.3ms)
+Completed 200 OK in 15ms (Views: 11.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/1/notes" for 127.0.0.1 at 2016-11-24 18:53:51 -0300
+Processing by NotesController#create as JSON
+  Parameters: {"title"=>"Tercera Nota", "description"=>"asdf", "user_id"=>"1", "note"=>{"title"=>"Tercera Nota", "description"=>"asdf"}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "notes" ("title", "description", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Tercera Nota"], ["description", "asdf"], ["user_id", 1], ["created_at", 2016-11-24 21:53:51 UTC], ["updated_at", 2016-11-24 21:53:51 UTC]]
+  [1m[35m (96.3ms)[0m  [1m[36mcommit transaction[0m
+  Rendering notes/show.json.jbuilder
+  Rendered notes/_note.json.jbuilder (1.2ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  Rendered notes/show.json.jbuilder (2.6ms)
+Completed 201 Created in 107ms (Views: 6.2ms | ActiveRecord: 96.9ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:53:53 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  Rendered users/_user.json.jbuilder (8.3ms)
+  Rendered users/show.json.jbuilder (9.7ms)
+Completed 200 OK in 15ms (Views: 12.1ms | ActiveRecord: 0.7ms)
+
+
+Started PUT "/users/1/notes/4" for 127.0.0.1 at 2016-11-24 18:57:23 -0300
+Processing by NotesController#update as JSON
+  Parameters: {"id"=>"4", "title"=>"Tercera Nota", "description"=>"Esta es una nota", "tags"=>[], "user_id"=>"1", "note"=>{"id"=>"4", "title"=>"Tercera Nota", "description"=>"Esta es una nota", "user_id"=>"1"}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: id
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "notes" SET "description" = ?, "updated_at" = ? WHERE "notes"."id" = ?[0m  [["description", "Esta es una nota"], ["updated_at", 2016-11-24 21:57:23 UTC], ["id", 4]]
+  [1m[35m (121.6ms)[0m  [1m[36mcommit transaction[0m
+  Rendering notes/show.json.jbuilder
+  Rendered notes/_note.json.jbuilder (1.2ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  Rendered notes/show.json.jbuilder (2.6ms)
+Completed 200 OK in 133ms (Views: 5.3ms | ActiveRecord: 122.3ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:57:26 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.3ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  Rendered users/_user.json.jbuilder (9.7ms)
+  Rendered users/show.json.jbuilder (11.4ms)
+Completed 200 OK in 19ms (Views: 14.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:57:58 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  Rendered users/_user.json.jbuilder (8.6ms)
+  Rendered users/show.json.jbuilder (10.4ms)
+Completed 200 OK in 18ms (Views: 14.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:58:10 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  Rendered users/_user.json.jbuilder (9.6ms)
+  Rendered users/show.json.jbuilder (11.1ms)
+Completed 200 OK in 17ms (Views: 13.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 18:58:14 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  Rendered users/_user.json.jbuilder (9.2ms)
+  Rendered users/show.json.jbuilder (10.7ms)
+Completed 200 OK in 16ms (Views: 12.7ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/1/notes/4" for 127.0.0.1 at 2016-11-24 18:59:59 -0300
+Processing by NotesController#destroy as JSON
+  Parameters: {"user_id"=>"1", "id"=>"4"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mNote Load (0.3ms)[0m  [1m[34mSELECT  "notes".* FROM "notes" WHERE "notes"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "notes_tags" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 4]]
+  [1m[35mSQL (0.8ms)[0m  [1m[31mDELETE FROM "notes" WHERE "notes"."id" = ?[0m  [["id", 4]]
+  [1m[35m (96.0ms)[0m  [1m[36mcommit transaction[0m
+Completed 204 No Content in 106ms (ActiveRecord: 98.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:00:02 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (5.9ms)
+  Rendered users/show.json.jbuilder (7.0ms)
+Completed 200 OK in 12ms (Views: 9.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:00:17 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.0ms)
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  Rendered tags/index.json.jbuilder (4.6ms)
+Completed 200 OK in 12ms (Views: 7.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:00:26 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  Rendered tags/_tag.json.jbuilder (0.3ms)
+  Rendered tags/index.json.jbuilder (3.7ms)
+Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:00:43 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.7ms)
+  Rendered tags/_tag.json.jbuilder (0.3ms)
+  Rendered tags/index.json.jbuilder (3.4ms)
+Completed 200 OK in 9ms (Views: 5.7ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users/1/tags/3" for 127.0.0.1 at 2016-11-24 19:01:15 -0300
+Processing by TagsController#update as JSON
+  Parameters: {"id"=>"3", "tagname"=>"Segunda Etiqueta", "description"=>"Esta es una etiqueta 1", "user_id"=>"1", "created_at"=>"2016-11-24T18:38:23.616Z", "updated_at"=>"2016-11-24T18:38:23.616Z", "url"=>"http://localhost:3000/users/1/tags/3", "tag"=>{"id"=>"3", "tagname"=>"Segunda Etiqueta", "description"=>"Esta es una etiqueta 1", "user_id"=>"1", "created_at"=>"2016-11-24T18:38:23.616Z", "updated_at"=>"2016-11-24T18:38:23.616Z"}}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.0ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: id, created_at, updated_at
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "tags" SET "description" = ?, "updated_at" = ? WHERE "tags"."id" = ?[0m  [["description", "Esta es una etiqueta 1"], ["updated_at", 2016-11-24 22:01:15 UTC], ["id", 3]]
+  [1m[35m (90.7ms)[0m  [1m[36mcommit transaction[0m
+  Rendering tags/show.json.jbuilder
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  Rendered tags/show.json.jbuilder (1.2ms)
+Completed 200 OK in 101ms (Views: 4.0ms | ActiveRecord: 91.9ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:01:18 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  Rendered tags/index.json.jbuilder (3.7ms)
+Completed 200 OK in 10ms (Views: 6.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:02:27 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.1ms)
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  Rendered tags/index.json.jbuilder (5.0ms)
+Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 19:03:21 -0300
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:03:21 -0300
+Processing by NotesController#index as JSON
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  Rendering tags/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.5ms)
+  Rendered tags/_tag.json.jbuilder (1.2ms)
+  Rendered tags/_tag.json.jbuilder (0.9ms)
+  Rendered tags/index.json.jbuilder (15.3ms)
+Completed 200 OK in 30ms (Views: 20.0ms | ActiveRecord: 0.5ms)
+
+
+  Rendered notes/_note.json.jbuilder (1.4ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (20.8ms)
+Completed 200 OK in 35ms (Views: 26.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 19:15:17 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:17 -0300
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  Rendering notes/index.json.jbuilder
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  Rendered notes/_note.json.jbuilder (2.4ms)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered notes/_note.json.jbuilder (1.9ms)
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.2ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (26.2ms)
+Completed 200 OK in 35ms (Views: 29.2ms | ActiveRecord: 0.7ms)
+
+
+  Rendered tags/_tag.json.jbuilder (0.6ms)
+  Rendered tags/index.json.jbuilder (11.8ms)
+Completed 200 OK in 30ms (Views: 16.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 19:15:22 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:22 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (2.4ms)
+  Rendered notes/_note.json.jbuilder (1.3ms)
+  Rendered tags/_tag.json.jbuilder (1.1ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  Rendered notes/index.json.jbuilder (15.6ms)
+  Rendered tags/index.json.jbuilder (14.5ms)
+Completed 200 OK in 34ms (Views: 29.5ms | ActiveRecord: 0.6ms)
+
+
+Completed 200 OK in 29ms (Views: 19.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:22 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (7.1ms)
+  Rendered users/show.json.jbuilder (8.7ms)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:24 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (7.6ms)
+  Rendered users/show.json.jbuilder (8.9ms)
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:25 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.1ms)
+  Rendered tags/_tag.json.jbuilder (0.6ms)
+  Rendered tags/index.json.jbuilder (7.0ms)
+Completed 200 OK in 15ms (Views: 10.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:27 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  Rendered tags/_tag.json.jbuilder (0.4ms)
+  Rendered tags/index.json.jbuilder (3.8ms)
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:29 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (1.1ms)
+  Rendered tags/_tag.json.jbuilder (0.5ms)
+  Rendered tags/index.json.jbuilder (4.5ms)
+Completed 200 OK in 11ms (Views: 7.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:31 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  Rendered tags/_tag.json.jbuilder (0.6ms)
+  Rendered tags/index.json.jbuilder (4.9ms)
+Completed 200 OK in 11ms (Views: 7.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:34 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.9ms)
+  Rendered tags/_tag.json.jbuilder (0.6ms)
+  Rendered tags/index.json.jbuilder (5.2ms)
+Completed 200 OK in 12ms (Views: 7.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:35 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering tags/index.json.jbuilder
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (0.8ms)
+  Rendered tags/_tag.json.jbuilder (0.5ms)
+  Rendered tags/index.json.jbuilder (4.3ms)
+Completed 200 OK in 11ms (Views: 6.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:36 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (11.0ms)
+  Rendered users/show.json.jbuilder (12.6ms)
+Completed 200 OK in 20ms (Views: 15.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:38 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.5ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (9.6ms)
+  Rendered users/show.json.jbuilder (10.8ms)
+Completed 200 OK in 18ms (Views: 13.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:39 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (9.5ms)
+  Rendered users/show.json.jbuilder (10.8ms)
+Completed 200 OK in 18ms (Views: 13.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:40 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (5.4ms)
+  Rendered users/show.json.jbuilder (6.5ms)
+Completed 200 OK in 19ms (Views: 15.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:42 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (9.1ms)
+  Rendered users/show.json.jbuilder (10.2ms)
+Completed 200 OK in 16ms (Views: 12.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2016-11-24 19:15:43 -0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.2ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered users/_user.json.jbuilder (9.9ms)
+  Rendered users/show.json.jbuilder (11.2ms)
+Completed 200 OK in 17ms (Views: 13.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 19:15:44 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:44 -0300
+  [1m[36mNote Load (0.2ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+Processing by TagsController#index as JSON
+  Rendered notes/_note.json.jbuilder (2.2ms)
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.2ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered notes/_note.json.jbuilder (3.1ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (21.2ms)
+  Rendering tags/index.json.jbuilder
+Completed 200 OK in 30ms (Views: 24.9ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered tags/_tag.json.jbuilder (2.2ms)
+  Rendered tags/_tag.json.jbuilder (0.5ms)
+  Rendered tags/index.json.jbuilder (7.2ms)
+Completed 200 OK in 19ms (Views: 13.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/notes" for 127.0.0.1 at 2016-11-24 19:15:48 -0300
+Processing by NotesController#index as JSON
+  Parameters: {"user_id"=>"1"}
+Started GET "/users/1/tags" for 127.0.0.1 at 2016-11-24 19:15:48 -0300
+Processing by TagsController#index as JSON
+  Parameters: {"user_id"=>"1"}
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."token" = ? LIMIT ?[0m  [["token", "e2c82a5ce40ef33ff4118aaec7f34081003e16f0f846869f01f6e667578787cc"], ["LIMIT", 1]]
+  [1m[36mDoorkeeper::AccessToken Load (0.1ms)[0m  [1m[34mSELECT  "oauth_access_tokens".* FROM "oauth_access_tokens" WHERE "oauth_access_tokens"."refresh_token" = ? LIMIT ?[0m  [["refresh_token", ""], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering notes/index.json.jbuilder
+  Rendering tags/index.json.jbuilder
+  [1m[36mNote Load (0.1ms)[0m  [1m[34mSELECT "notes".* FROM "notes" WHERE "notes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1m[34mSELECT "tags".* FROM "tags" WHERE "tags"."user_id" = ?[0m  [["user_id", 1]]
+  Rendered notes/_note.json.jbuilder (1.5ms)
+  Rendered tags/_tag.json.jbuilder (0.5ms)
+  Rendered tags/_tag.json.jbuilder (0.3ms)
+  Rendered notes/_note.json.jbuilder (1.0ms)
+  Rendered tags/index.json.jbuilder (8.0ms)
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 1]]
+Completed 200 OK in 23ms (Views: 12.1ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mTag Load (0.1ms)[0m  [1m[34mSELECT "tags".* FROM "tags" INNER JOIN "notes_tags" ON "tags"."id" = "notes_tags"."tag_id" WHERE "notes_tags"."note_id" = ?[0m  [["note_id", 2]]
+  Rendered notes/index.json.jbuilder (15.2ms)
+Completed 200 OK in 30ms (Views: 20.7ms | ActiveRecord: 0.6ms)
+
+

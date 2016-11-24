@@ -15,54 +15,6 @@ app.controller('UserController', function($http,$scope,$window,growl){
 
     var configu = {disableCountDown: true};
 
-    /*var configAuth = {
-        headers: {
-            'Accept': 'application/json;odata=verbose',
-            'client_id': 'e2b602ba56346a925c51c3632b666aa0ca6eb1239caddaf6fa5cbe313c300d4b',
-            'cliente_secret': '9b1362f51894e2a360feba98ab32fa5b0fd678af014b7b0cfd2100c966d88d0b'
-            
-        }
-    };*/
-	
-    /*if(!$window.localStorage['accessToken']){
-
-            var configAuth = {
-                headers: {
-                    'Accept': 'application/json;odata=verbose',
-                    'client_id': 'e2b602ba56346a925c51c3632b666aa0ca6eb1239caddaf6fa5cbe313c300d4b',
-                    'cliente_secret': '9b1362f51894e2a360feba98ab32fa5b0fd678af014b7b0cfd2100c966d88d0b',
-                    'username' : 'famancil',
-                    'password'  : 'hola123'
-                 }
-            };
-
-            $http.post("http://localhost:3000/oauth/token",grant,configAuth)
-            .success(function (data) {
-                //$window.localStorage['token_type'] = data.token_type;
-                $window.localStorage['accessToken']= data.token_type+" "+data.access_token;       
-            })
-            .error(function (response) {
-                growl.error("GG, WP IZI", configu);
-            });
-
-        }
-
-        $scope.token = $window.localStorage['accessToken'];
-        $scope.token_type = $window.localStorage['token_type'];*/
-
-    /*if(!$window.localStorage['accessToken']){
-        $http.post("http://localhost:3000/users",config)
-            .success(function (data) {
-                
-           
-            })
-            .error(function (response) {
-                growl.error("Men, te cortaron el agua", configu);
-
-            });
-        
-    };*/
-
 	$scope.logout = function(){
     	$window.localStorage.clear();
         $window.location.reload();
@@ -70,42 +22,6 @@ app.controller('UserController', function($http,$scope,$window,growl){
     var sum=0;
     var a;
     $scope.err={}
-
-	/*$scope.login = function() {
-
-        var config = $scope.getToken();
-		$http.get("http://localhost:3000/users",config)
-            .success(function (data) {
-                console.log(data);
-                $scope.users=data;
-                for (var i = 0; i < $scope.users.length; ++i){
-                	if($scope.users[i].user.username == $scope.username && 
-                		$scope.users[i].user.password == $scope.password){
-             				sum=1;
-                            a=i;
-                        }
-            	}
-            	if(sum==1){
-            		
-                    $window.localStorage['id']=$scope.users[a].user.id;
-            		$window.localStorage['username']=$scope.username;
-            		$window.localStorage['password']=$scope.password;
-                    $window.localStorage['fullname']=$scope.users[a].user.fullname;
-                    $window.localStorage['email']=$scope.users[a].user.email;
-            		
-            		$window.location.href="../index.html";
-            	}
-            	else {
-                    growl.error("Username y/o password incorrectos", configu);
-            	}
-           
-        	})
-            .error(function (response) {
-                growl.error("Men, te cortaron el agua", configu);
-
-            });
-		
-	};*/
 
     $scope.checkUser = function(config) {
 
@@ -193,45 +109,6 @@ app.controller('UserController', function($http,$scope,$window,growl){
     $scope.signup =function() {
         $scope.getToken(2);         // 2 = signup
     }   
-
-    /*$scope.getToken =function() {
-        if(!$window.localStorage['accessToken']){
-
-            var configAuth = {
-                headers: {
-                    'Accept': 'application/json;odata=verbose',
-                    'client_id': 'e2b602ba56346a925c51c3632b666aa0ca6eb1239caddaf6fa5cbe313c300d4b',
-                    'cliente_secret': '9b1362f51894e2a360feba98ab32fa5b0fd678af014b7b0cfd2100c966d88d0b',
-                    'username' : $scope.username,
-                    'password'  : $scope.password
-                 }
-            };
-
-            $http.post("http://localhost:3000/oauth/token",grant,configAuth)
-            .success(function (data) {
-                //$window.localStorage['token_type'] = data.token_type;
-                $window.localStorage['accessToken']= data.token_type+" "+data.access_token;       
-            })
-            .error(function (response) {
-                growl.error("Error en pedir Tokens", configu);
-            });
-
-        }
-
-        var config = {
-            headers: {
-                'Authorization' : $window.localStorage['accessToken'],
-                'Accept': 'application/json;odata=verbose',
-                'client_id': 'e2b602ba56346a925c51c3632b666aa0ca6eb1239caddaf6fa5cbe313c300d4b',
-                'cliente_secret': '9b1362f51894e2a360feba98ab32fa5b0fd678af014b7b0cfd2100c966d88d0b'
-                }
-            };
-        return config;
-    };*/
-
-
-
-
 
 	$scope.registerUser = function(config) {
 

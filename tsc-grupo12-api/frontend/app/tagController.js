@@ -15,11 +15,6 @@ app.controller('TagController', function($http,$scope,$window,growl,$timeout){
         $scope.registerTagModal = true;
     };
 
-	//$scope.user=$rootScope.user;
-	//var storageType = localStorageService.set("num",num);
-	//$scope.num=localStorageService.get("num");
-	//$window.localStorage.setItem("num", num);
-	//$scope.title = $rootScope.test;
 	$scope.user.id = $window.localStorage['id'];
 	$scope.user.username = $window.localStorage['username'];
 	$scope.user.password = $window.localStorage['password'];
@@ -60,13 +55,10 @@ app.controller('TagController', function($http,$scope,$window,growl,$timeout){
                             $timeout(function() {
                                 $window.location.reload();
                             },2000);                          
-                            //growl.success("<b>Exito</b>, usuario ha sido creado", configu);
-                            // success callback
                           }, 
                           function(response){
                             $scope.err=response;
                             growl.error("Error en el registro, favor verificar datos", configu);
-                            // failure callback
                           }
                         );  
 
@@ -93,13 +85,10 @@ app.controller('TagController', function($http,$scope,$window,growl,$timeout){
                             $timeout(function() {
                                 $window.location.reload();
                             },2000);                          
-                            //growl.success("<b>Exito</b>, usuario ha sido creado", configu);
-                            // success callback
                           }, 
                           function(response){
                             $scope.err=response;
                             growl.error("Error en el registro, favor verificar datos", configu);
-                            // failure callback
                           }
                         );  
 
@@ -119,7 +108,6 @@ app.controller('TagController', function($http,$scope,$window,growl,$timeout){
     };
 
     $scope.okDeleteTag = function(id,user_id) {
-        //$scope.editNote=note;
         $http.delete("http://localhost:3000/users/"+user_id+"/tags/"+id, config)
         .then(
                           function(response){
@@ -127,42 +115,20 @@ app.controller('TagController', function($http,$scope,$window,growl,$timeout){
                             $timeout(function() {
                                 $window.location.reload();
                             },2000);                          
-                            //growl.success("<b>Exito</b>, usuario ha sido creado", configu);
-                            // success callback
                           }, 
                           function(response){
                             $scope.err=response;
                             growl.error("Error, favor verificar", configu);
-                            // failure callback
                           }
                         );  
 
 
         $scope.deleteTagModal = false;
     };
-
     $scope.cancelDeleteTag = function() {
         $scope.deleteTagModal = false;
         $window.location.reload();
     };
-
-
-	/*$scope.basicUsage = function (type) {
-        var configu = {disableCountDown: true};
-        switch (type) {
-            case "success":
-            growl.success("<b>I'm</b> a success message", configu);
-            break;
-            case "info":
-            growl.info("I'm an info message", configu);
-            break;
-            case "warning":
-            growl.warning("I'm the warning message", configu);
-            break;
-            default: 
-            growl.error("Ups, error message here!", configu);
-    	}
-  	};*/
 });
 
 app.config(['growlProvider', function (growlProvider) {

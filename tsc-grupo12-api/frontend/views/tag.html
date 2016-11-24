@@ -6,14 +6,8 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
     <link rel="stylesheet" href="//rawgit.com/JanStevens/angular-growl-2/master/build/angular-growl.css" />
-    <!--<link rel="stylesheet" type="text/css" href="css/loading-bar.css">-->
-  
     <script src="../lib/angular/angular.js"></script>
     <script src="../lib/angular/angular-animate.js"></script>
-    <!--<script src="lib/loading-bar/loading-bar.js"></script>-->
-    <!--<script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
-    <script src="lib/angular-local-storage/dist/angular-local-storage.min.js"></script>
-    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="../bower_components/angular-growl-v2/build/angular-growl.js"></script>
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
@@ -26,9 +20,8 @@
         $(".dropdown-toggle").dropdown();
       });
     </script>
-  <!--<script src="app/noteController.js"></script>-->
-
   </head>
+
   <body ng-controller="TagController">
 		<nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -47,25 +40,7 @@
         <li><a href="../index.html">User</a></li>
         <li><a href="note.html">Notes</a></li>
         <li class="active"><a href="#">Tags</a></li>
-        <!--<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>-->
       </ul>
-      <!--<form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>-->
       <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> {{user.fullname}} <span class="caret"></span></a>
@@ -73,7 +48,6 @@
             <li><a ng-click="logout()">Logout</a></li>
           </ul>
         </li>
-        <!--<li><a href="#">{{users.fullname}}</a></li>-->
       </ul>
     </div>
   </div>
@@ -81,7 +55,7 @@
 
 
   <div growl align="center"></div>
-  <!--<button ng-click="basicUsage('warning')" type="button" class="btn btn-warning">Warning</button>-->
+<div class="container">
 
   <h2 class="text-center">User:  {{user.username}} </h2>
 
@@ -113,131 +87,85 @@
   </tbody>
 </table> 
 
-<div style="text-align:center">  
-    <button ng-click="registerTag(user.id)" type="button" class="btn btn-success"> 
-    <span class="glyphicon glyphicon-plus"></span> Register Tag
-    </button>
-</div>  
+  <div style="text-align:center">  
+      <button ng-click="registerTag(user.id)" type="button" class="btn btn-success"> 
+      <span class="glyphicon glyphicon-plus"></span> Register Tag
+      </button>
+  </div>  
 
 
-
-<!--<button class="btn" ng-click="open()">Open Modal</button>-->
-
-<div class="modal" modal="registerTagModal" close="cancelRegister()">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" ng-click="cancelRegister()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Register Tag</h4>
+  <div class="modal" modal="registerTagModal" close="cancelRegister()">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" ng-click="cancelRegister()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Register Tag</h4>
+        </div>
+        <div class="modal-body">
+          <form ng-submit="newTag(idUser)" >
+              <div class="form-group">
+                  <label>Tagname(*)</label>
+                  <input type="text" class="form-control" name="title" ng-model="tagUser.tagname" required>
+              </div>
+              <div class="form-group">
+                  <label>Description(*)</label>
+                  <input type="text" class="form-control" name="description" ng-model="tagUser.description" required>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" ng-click="newTag(idUser)">Ok</button>
+          <button class="btn btn-default" ng-click="cancelRegister()">Cancel</button>
+        </div>
       </div>
-      <div class="modal-body">
-        <form ng-submit="newTag(idUser)" >
-            <div class="form-group">
-                <label>Tagname(*)</label>
-                <input type="text" class="form-control" name="title" ng-model="tagUser.tagname" required>
-            </div>
-            <div class="form-group">
-                <label>Description(*)</label>
-                <input type="text" class="form-control" name="description" ng-model="tagUser.description" required>
-            </div>
+    </div>
+  </div>
 
-            <pre> {{tagUser | json}} </pre>
-
-            <!--<pre> {{id | json}} </pre>-->
-
-             <!--<button ng-click="$storage.counter = $storage.counter + 1">{{$storage.counter}}</button>-->
-
-        </form>
+  <div class="modal" modal="editTagModal" close="cancelEditTag()">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" ng-click="cancelEditTag()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Edit Tag</h4>
+        </div>
+        <div class="modal-body">
+          <form ng-submit="editTag(idUser)" >
+              <div class="form-group">
+                  <label>Tagname(*)</label>
+                  <input type="text" class="form-control" name="title" ng-model="editTag.tagname" required>
+              </div>
+              <div class="form-group">
+                  <label>Description(*)</label>
+                  <input type="text" class="form-control" name="description" ng-model="editTag.description" required>
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-success" ng-click="okEditTag(editTag)">Ok</button>
+          <button class="btn btn-default" ng-click="cancelEditTag()">Cancel</button>
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success" ng-click="newTag(idUser)">Ok</button>
-        <button class="btn btn-default" ng-click="cancelRegister()">Cancel</button>
-        <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="ok()">Save changes</button>-->
+    </div>
+  </div>
+
+  <div class="modal" modal="deleteTagModal" close="cancelDeleteTag()">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" ng-click="cancelDeleteTag()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Delete Tag</h4>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure about remove this tag?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" ng-click="okDeleteTag(idTag,idUser)">Yes</button>
+          <button class="btn btn-default" ng-click="cancelDeleteTag()" >No</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal" modal="editTagModal" close="cancelEditTag()">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" ng-click="cancelEditTag()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Edit Tag</h4>
-      </div>
-      <div class="modal-body">
-        <form ng-submit="editTag(idUser)" >
-            <div class="form-group">
-                <label>Tagname(*)</label>
-                <input type="text" class="form-control" name="title" ng-model="editTag.tagname" required>
-            </div>
-            <div class="form-group">
-                <label>Description(*)</label>
-                <input type="text" class="form-control" name="description" ng-model="editTag.description" required>
-            </div>
-
-            <pre> {{editTag | json}} </pre>
-
-            <!--<pre> {{id | json}} </pre>-->
-
-             <!--<button ng-click="$storage.counter = $storage.counter + 1">{{$storage.counter}}</button>-->
-
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success" ng-click="okEditTag(editTag)">Ok</button>
-        <button class="btn btn-default" ng-click="cancelEditTag()">Cancel</button>
-        <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="ok()">Save changes</button>-->
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal" modal="deleteTagModal" close="cancelDeleteTag()">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" ng-click="cancelDeleteTag()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Delete Tag</h4>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure about remove this tag?</p>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-danger" ng-click="okDeleteTag(idTag,idUser)">Yes</button>
-        <button class="btn btn-default" ng-click="cancelDeleteTag()" >No</button>
-        <!--<button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Close</button>
-        <button type="button" class="btn btn-primary" ng-click="ok()">Save changes</button>-->
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-  
-
-
-   <!--<pre> {{users | json}} </pre>-->
-
-   <!--<h1>{{title}}</h1>
-<p>Bienvenido al principio de tu fin! =D</p>
-
-    <div class="container">
-
-      <div class="jumbotron text-center">
-        <h1><span class="fa fa-lock"></span> Node Authentication</h1>
-
-        <p>Login or Register with:</p>
-
-        <a href="/login" class="btn btn-default"><span class="fa fa-user"></span> Local Login</a>
-        <a href="/signup" class="btn btn-default"><span class="fa fa-user"></span> Local Signup</a>
-      </div>
-
-    </div>-->
-    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-  
-  </body>
+</body>
 </html>
