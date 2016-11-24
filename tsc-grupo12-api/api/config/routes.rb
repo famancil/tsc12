@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root :to => 'home#index'
-
   use_doorkeeper
   post 'assignation', to: 'notes#assign'
   resources :users, defaults: { format: 'json' } do
